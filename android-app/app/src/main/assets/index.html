@@ -96,6 +96,14 @@
     .section-head h3 { margin: 6px 0 0; font-family: var(--display); font-size: 30px; font-weight: 500; letter-spacing: -.05em; }
     .section-head p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
     .panel { padding: 19px; border-radius: 20px; box-shadow: none; }
+    .week-strip { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+    .week-day { min-height: 82px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 11px 7px 9px; border: 1px solid var(--line); border-radius: 15px; background: #f7f4ec; }
+    .week-day small { color: var(--muted); font-size: 10px; font-weight: 800; }
+    .week-day strong { font-family: var(--display); font-size: 24px; font-weight: 500; }
+    .week-day i { width: 8px; height: 8px; border-radius: 50%; background: #d5d8cf; }
+    .week-day i.on { background: var(--green); box-shadow: 0 0 0 4px var(--green-soft); }
+    .week-day.today { border-color: var(--green); background: var(--green-soft); }
+    .week-day.today small { color: #477248; }
     .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
     .panel-head strong { font-size: 14px; }
     .panel-head span { color: var(--muted); font-size: 11px; }
@@ -222,7 +230,7 @@
     @media (max-width: 700px) {
       body { padding-bottom: 74px; }
       .shell { display: block; }
-      .sidebar { position: sticky; z-index: 20; top: 0; width: 100%; height: auto; display: block; padding: 11px 14px; border-right: 0; border-bottom: 1px solid rgba(34, 61, 86, .12); }
+      .sidebar { position: sticky; z-index: 20; top: 0; width: 100%; height: auto; display: block; padding: max(11px, env(safe-area-inset-top)) 14px 11px; border-right: 0; border-bottom: 1px solid rgba(34, 61, 86, .12); }
       .brand { padding: 0 2px 10px; border-bottom: 0; }
       .brand-mark { width: 42px; height: 42px; flex-basis: 42px; border-radius: 14px; }
       .brand h1 { font-size: 21px; }
@@ -259,6 +267,9 @@
       .metric strong, .metric input { font-size: 22px; }
       .capture { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
+      .week-strip { gap: 5px; }
+      .week-day { min-height: 72px; padding: 9px 3px 7px; border-radius: 12px; }
+      .week-day strong { font-size: 20px; }
       .modal { padding: 19px; border-radius: 21px; }
     }
   </style>
@@ -275,10 +286,10 @@
     const uid = (prefix) => (prefix || "id") + "-" + Date.now() + "-" + Math.random().toString(36).slice(2, 7);
     const departments = [
       { id: "office", title: "办公厅", subtitle: "日程统筹", char: "art", color: "office", desc: "把今天最重要的事安排清楚", modules: [] },
-      { id: "finance", title: "财政部", subtitle: "金钱管理", char: "scott", color: "finance", desc: "收入、支出与储蓄目标", modules: ["收支记录", "月度预算", "储蓄目标"] },
-      { id: "education", title: "教育部", subtitle: "学业进度", char: "mike", color: "education", desc: "英语、阅读与学习项目", modules: ["英语学习", "阅读进度", "学习项目"] },
       { id: "health", title: "卫健委", subtitle: "身体健康", char: "randy", color: "health", desc: "身体档案、运动与饮食饮水", modules: ["身体档案", "运动管理", "饮食饮水"] },
+      { id: "education", title: "教育部", subtitle: "学业进度", char: "mike", color: "education", desc: "英语、阅读与学习项目", modules: ["英语学习", "阅读进度", "学习项目"] },
       { id: "development", title: "发改委", subtitle: "长期发展", char: "sully", color: "development", desc: "目标、自媒体与长期项目", modules: ["长期目标", "自媒体"] },
+      { id: "finance", title: "财政部", subtitle: "金钱管理", char: "scott", color: "finance", desc: "收入、支出与储蓄目标", modules: ["收支记录", "月度预算", "储蓄目标"] },
       { id: "culture", title: "文旅部", subtitle: "休息娱乐", char: "terri", color: "culture", desc: "吃喝玩乐与生活资料", modules: ["美食生活", "出行攻略", "休息娱乐"] }
     ];
     const moduleIcons = { "收支记录": "￥", "月度预算": "▣", "储蓄目标": "↗", "英语学习": "A", "阅读进度": "▤", "学习项目": "□", "身体档案": "＋", "运动管理": "↗", "饮食饮水": "○", "长期目标": "◎", "自媒体": "◌", "美食生活": "◇", "出行攻略": "↗", "休息娱乐": "○" };
@@ -407,8 +418,7 @@
       return renderTop(department("office"), "01 · 办公厅 / 日程统筹", "今天，先完成最重要的一件事。", "把六个部门的长期方向，收束成今天真正要做的几件事。") +
         '<section class="dashboard-grid"><article class="hero"><div><div class="hero-kicker">DAILY FOCUS · 有计划的一天</div><h3>完成度 <span>' + percent + '%</span>，给自己留一点余地。</h3></div><div class="hero-foot"><div><strong>' + p.completed + ' / ' + p.total + '</strong><small> 今日任务已完成</small></div><div class="progress-bar"><i style="width:' + percent + '%"></i></div></div></article><article class="side-stat"><p>连续完成</p><strong>' + streak() + '<small> 天</small></strong><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p>稳定推进，比爆发更重要</p></article></section>' +
         '<section><div class="section-head"><div><div class="section-label">02 · 今日安排</div><h3>今日任务</h3></div><button class="ghost-btn compact" data-action="pick-tasks">挑选今日任务 ↗</button></div><div class="task-layout"><div class="panel"><div class="panel-head"><strong>我的清单</strong><span>' + p.completed + ' 项已完成</span></div><div class="task-list">' + renderTasks() + '</div></div><div class="panel quick-panel"><div class="panel-head"><strong>任务库</strong><span>勾选加入今天</span></div><div class="quick-list">' + renderQuickTasks() + '</div><button class="primary-btn compact" style="width:100%;margin-top:13px" data-action="add-task">＋ 建一个新任务</button></div></div></section>' +
-        '<section><div class="section-head"><div><div class="section-label">03 · 部门总览</div><h3>六个部门</h3></div><p>进入部门，查看模块和进度。</p></div><div class="dept-grid">' + departments.filter(item => item.id !== "office").map(renderDeptCard).join("") + '</div></section>' +
-        '<section><div class="section-head"><div><div class="section-label">04 · 本周一瞥</div><h3>一周节奏</h3></div><p>先看趋势，不追求每天满分。</p></div><div class="panel"><div class="week-strip">' + renderWeekStrip() + '</div></div></section>';
+        '<section><div class="section-head"><div><div class="section-label">03 · 本周一瞥</div><h3>一周节奏</h3></div><p>先看趋势，不追求每天满分。</p></div><div class="panel"><div class="week-strip">' + renderWeekStrip() + '</div></div></section>';
     }
     function streak() {
       const days = [];
