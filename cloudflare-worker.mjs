@@ -1,4 +1,4 @@
-const JSON_HEADERS = { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" };
+const JSON_HEADERS = { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store", "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET,POST,OPTIONS", "Access-Control-Allow-Headers": "Content-Type" };
 
 function json(value, status = 200) {
   return new Response(JSON.stringify(value), { status, headers: JSON_HEADERS });
@@ -145,6 +145,7 @@ async function analyzeResource(body, env) {
 }
 
 async function handleApi(request, env, url) {
+  if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: JSON_HEADERS });
   if (request.method === "GET" && url.pathname === "/api/health") return json({ ok: true, service: "alu-workbench", modelConfigured: Boolean(env.LLM_API_KEY || env.OPENAI_API_KEY), model: env.LLM_MODEL || env.OPENAI_MODEL || "gpt-4o-mini" });
   try {
     const body = request.method === "POST" ? await request.json() : {};

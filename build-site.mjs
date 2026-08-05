@@ -9,7 +9,7 @@ await rm(dist, { recursive: true, force: true });
 await mkdir(path.join(dist, "client"), { recursive: true });
 await mkdir(path.join(dist, "server"), { recursive: true });
 
-for (const file of ["index.html", "manifest.webmanifest", "sw.js"]) {
+for (const file of ["index.html", "manifest.webmanifest", "sw.js", "app-config.js"]) {
   await cp(path.join(root, file), path.join(dist, "client", file));
 }
 await cp(path.join(root, "assets"), path.join(dist, "client", "assets"), { recursive: true });

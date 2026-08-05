@@ -1,0 +1,16 @@
+plugins {
+    id "com.android.application"
+}
+
+android {
+    namespace "com.alu.workbench"
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.alu.workbench"
+        minSdk 26
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+    }
+}
