@@ -28,7 +28,7 @@
 
 ## 启动本地测试版
 
-在 personal-workbench 目录运行：
+在 `运动/阿卢工作台` 目录运行：
 
 ~~~bash
 npm start
