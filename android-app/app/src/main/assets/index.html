@@ -104,6 +104,30 @@
     .week-day i.on { background: var(--green); box-shadow: 0 0 0 4px var(--green-soft); }
     .week-day.today { border-color: var(--green); background: var(--green-soft); }
     .week-day.today small { color: #477248; }
+    button.week-day { color: inherit; font: inherit; cursor: pointer; }
+    .week-day.selected-day { outline: 2px solid var(--green); outline-offset: 2px; }
+    .training-overview { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(230px, .75fr); gap: 14px; }
+    .training-card { padding: 16px; border-radius: 16px; background: #f1efe7; }
+    .training-card.today-card { border: 1px solid #b9d4ad; background: var(--green-soft); }
+    .training-card h4 { margin: 0; font-size: 16px; }
+    .training-card p { margin: 6px 0 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .training-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .training-chip { padding: 5px 8px; border-radius: 99px; color: var(--navy); background: white; font-size: 10px; }
+    .training-steps { display: grid; gap: 6px; margin: 13px 0 0; }
+    .training-step { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 7px; align-items: start; color: #4d5a55; font-size: 11px; line-height: 1.45; }
+    .training-step b { display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; color: white; background: var(--navy); font-size: 9px; }
+    .training-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
+    .training-progress { display: grid; gap: 10px; }
+    .training-progress strong { font-family: var(--display); font-size: 34px; font-weight: 500; }
+    .training-progress p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .log-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .log-exercise { padding: 11px; border-radius: 13px; background: #f1efe7; }
+    .log-exercise strong { display: block; margin-bottom: 8px; font-size: 12px; }
+    .log-exercise .form-row { gap: 7px; }
+    .log-exercise input { width: 100%; padding: 8px 9px; border: 1px solid var(--line); border-radius: 9px; outline: 0; background: white; font-size: 11px; }
+    .log-label { display: block; margin-bottom: 4px; color: var(--muted); font-size: 9px; }
+    .plan-note { margin-top: 12px; }
+    @media (max-width: 900px) { .training-overview { grid-template-columns: 1fr; } .log-grid { grid-template-columns: 1fr; } }
     .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
     .panel-head strong { font-size: 14px; }
     .panel-head span { color: var(--muted); font-size: 11px; }
@@ -179,6 +203,29 @@
     .meal { display: flex; align-items: center; gap: 9px; padding: 10px 0; border-bottom: 1px solid #ece9e0; color: var(--muted); font-size: 12px; }
     .meal:last-child { border-bottom: 0; }
     .meal input { accent-color: var(--green); }
+    .quick-dept { margin: 9px 0; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.5); overflow: hidden; }
+    .quick-dept summary { display: flex; justify-content: space-between; gap: 10px; padding: 12px 13px; color: var(--navy); cursor: pointer; font-size: 11px; font-weight: 800; list-style: none; }
+    .quick-dept summary::-webkit-details-marker { display: none; }
+    .quick-dept summary::before { content: "＋"; color: var(--green); }
+    .quick-dept[open] summary::before { content: "－"; }
+    .quick-dept summary small { color: var(--muted); font-weight: 600; }
+    .quick-subgroup { padding: 0 10px 7px; }
+    .quick-subgroup > span { display: block; padding: 7px 5px 3px; color: var(--green); font-size: 10px; font-weight: 800; }
+    .module-stack { display: grid; gap: 13px; }
+    .module-section .panel-head { align-items: flex-start; }
+    .module-hint { margin: 4px 0 0; color: var(--muted); font-size: 11px; font-weight: 500; }
+    .module-modal-tasks { margin-top: 14px; max-height: 360px; overflow: auto; }
+    .record-history { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .record-row, .plan-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+    .record-row:last-child, .plan-row:last-child { border-bottom: 0; }
+    .record-row > div, .plan-row > div:first-child { display: grid; gap: 3px; }
+    .record-row span, .record-row small, .plan-row span, .plan-row small { color: var(--muted); font-size: 10px; }
+    .training-calendar { max-height: 58vh; overflow: auto; margin-top: 14px; }
+    .plan-row.today-plan { padding-left: 9px; border-left: 3px solid var(--green); background: var(--green-soft); }
+    .plan-row .training-actions { margin-top: 0; }
+    .module-edit-row { display: grid; grid-template-columns: 1fr 1.5fr auto; gap: 8px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line); }
+    .module-manager { max-height: 48vh; overflow: auto; margin-top: 14px; }
+    .form-help { display: block; margin-top: 6px; color: var(--muted); font-size: 10px; }
     .goal-list, .book-list, .idea-list, .resource-list { display: grid; gap: 9px; }
     .goal-item, .book-item, .idea-item { padding: 13px; border-radius: 14px; background: #f1efe7; }
     .goal-item { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
@@ -204,6 +251,7 @@
     .placeholder span { margin-top: 15px; padding: 7px 10px; border-radius: 99px; color: #855333; background: var(--orange-soft); font-size: 10px; }
     .modal-backdrop { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 17px; background: rgba(24, 37, 43, .38); backdrop-filter: blur(8px); }
     .modal { width: min(570px, 100%); max-height: min(810px, 94vh); overflow: auto; padding: 23px; border-radius: 24px; background: var(--paper); box-shadow: 0 30px 90px rgba(24, 37, 43, .22); }
+    .modal-wide { width: min(760px, 100%); }
     .modal-head { display: flex; align-items: start; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
     .modal-head h3 { margin: 0; font-family: var(--display); font-size: 29px; font-weight: 500; letter-spacing: -.05em; }
     .close { border: 0; padding: 0; color: var(--muted); background: transparent; font-size: 25px; }
@@ -320,15 +368,23 @@
       activeDepartment: "office",
       tasks: seedTasks.map((task, index) => ({ ...task, selectedDates: index < 5 ? [today()] : [], doneDates: [] })),
       trash: [],
-      metrics: { height: 153, weight: 50.5, bodyFat: "", targetWeight: "" },
+      submodules: {},
+      taskLibraryOpen: { education: true },
+      metrics: { height: 166, weight: 60, bodyFat: "", targetWeight: "" },
+      bodyRecords: [],
       water: { [today()]: 0 },
+      waterTarget: 8,
       meals: { [today()]: [false, false, false] },
+      mealRecords: {},
+      workoutLogs: {},
+      workoutPlan: { start: "2026-08-06", end: "2026-09-05", entries: {} },
+      workoutViewDate: "",
       inspirations: [],
       books: [],
       goals: [{ id: "goal-1", title: "建立稳定的内容创作节奏", status: "进行中", progress: 20, note: "每周完成一次内容复盘，并逐步形成自己的风格档案" }],
       onboardingDone: false
     };
-    let state = loadState();
+    let state;
     let modal = null;
     let toastTimer = null;
     let backendStatus = "解析服务检测中…";
@@ -336,23 +392,59 @@
     let deferredInstallPrompt = null;
 
     function clone(value) { return JSON.parse(JSON.stringify(value)); }
+    function moduleId(deptId, name) { return String(deptId || "") + "::" + String(name || "").trim().toLowerCase(); }
+    function defaultModules(deptId) {
+      const dept = department(deptId);
+      return (dept.modules || []).map(function(name, index) { return { id: moduleId(deptId, name), name: name, description: moduleDesc[name] || "记录和推进这个方向", icon: moduleIcons[name] || "○", color: ["green", "blue", "purple", "orange"][index % 4], archived: false, builtIn: true }; });
+    }
+    function modulesFor(deptId, includeArchived) {
+      const builtIns = defaultModules(deptId);
+      const custom = state && Array.isArray(state.submodules?.[deptId]) ? state.submodules[deptId] : [];
+      const merged = builtIns.map(function(base) { const override = custom.find(function(item) { return item.id === base.id; }); return override ? { ...base, ...override } : base; }).concat(custom.filter(function(item) { return !builtIns.some(function(base) { return base.id === item.id; }); }));
+      return includeArchived ? merged : merged.filter(function(item) { return !item.archived; });
+    }
+    function moduleById(deptId, id) { return modulesFor(deptId, true).find(function(item) { return item.id === id; }) || modulesFor(deptId, true)[0]; }
+    function ensureTaskModule(task) {
+      const name = task.tag || department(task.department).modules?.[0] || department(task.department).title;
+      task.moduleId = task.moduleId || moduleId(task.department, name);
+      task.tag = moduleById(task.department, task.moduleId)?.name || name;
+      task.selectedDates = Array.isArray(task.selectedDates) ? task.selectedDates : [];
+      task.excludedDates = Array.isArray(task.excludedDates) ? task.excludedDates : [];
+      task.doneDates = Array.isArray(task.doneDates) ? task.doneDates : [];
+      return task;
+    }
     function loadState() {
       try {
         const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-        if (!saved) return clone(defaultState);
-        return {
+        if (!saved) {
+          const fresh = clone(defaultState);
+          fresh.tasks = fresh.tasks.map(ensureTaskModule);
+          return fresh;
+        }
+        const next = {
           ...clone(defaultState), ...saved,
           tasks: Array.isArray(saved.tasks) ? saved.tasks : clone(defaultState.tasks),
           trash: Array.isArray(saved.trash) ? saved.trash : [],
+          submodules: saved.submodules && typeof saved.submodules === "object" ? saved.submodules : {},
+          taskLibraryOpen: saved.taskLibraryOpen && typeof saved.taskLibraryOpen === "object" ? saved.taskLibraryOpen : { education: true },
           metrics: { ...defaultState.metrics, ...(saved.metrics || {}) },
+          bodyRecords: Array.isArray(saved.bodyRecords) ? saved.bodyRecords : [],
           water: saved.water || defaultState.water,
+          waterTarget: Number(saved.waterTarget || 8),
           meals: saved.meals || defaultState.meals,
+          mealRecords: saved.mealRecords || {},
+          workoutLogs: saved.workoutLogs || {},
+          workoutPlan: { ...defaultState.workoutPlan, ...(saved.workoutPlan || {}) },
           inspirations: Array.isArray(saved.inspirations) ? saved.inspirations : [],
           books: Array.isArray(saved.books) ? saved.books : [],
           goals: Array.isArray(saved.goals) ? saved.goals : clone(defaultState.goals)
         };
+        next.tasks = next.tasks.map(ensureTaskModule);
+        next.trash = next.trash.map(ensureTaskModule);
+        return next;
       } catch (_) { return clone(defaultState); }
     }
+    state = loadState();
     function persist() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
     function setState(mutator) { mutator(state); persist(); render(); }
     function department(id) { return departments.find(item => item.id === id) || departments[0]; }
@@ -386,8 +478,17 @@
       }
       render();
     }
-    function completedToday(task) { return (task.doneDates || []).includes(today()); }
-    function selectedToday(task) { return (task.selectedDates || []).includes(today()) || (!task.selectedDates && task.repeat === "daily"); }
+    function isHydrationTask(task) { return task.kind === "water" || (task.department === "health" && task.tag === "饮食饮水" && /喝水|饮水/.test(task.title || "")); }
+    function completedToday(task) { return isHydrationTask(task) ? Number(state.water[today()] || 0) >= Number(state.waterTarget || 8) : (task.doneDates || []).includes(today()); }
+    function selectedToday(task) {
+      const key = today();
+      if ((task.excludedDates || []).includes(key)) return false;
+      if ((task.selectedDates || []).includes(key)) return true;
+      if (task.repeat === "daily") return true;
+      if (task.repeat === "weekly") return dateFromKey(key).getDay() === Number(task.repeatDay == null ? new Date().getDay() : task.repeatDay);
+      if (task.repeat === "monthly") return dateFromKey(key).getDate() === Number(task.repeatDate || dateFromKey(task.createdAt || key).getDate());
+      return false;
+    }
     function todayTasks() { return state.tasks.filter(selectedToday); }
     function progress() {
       const list = todayTasks();
@@ -395,6 +496,123 @@
     }
     function priorityLabel(priority) { return ({ high: "高", medium: "中", low: "低" })[priority] || "低"; }
     function repeatLabel(repeat) { return ({ daily: "每天", weekly: "每周", monthly: "每月", none: "一次性" })[repeat] || "一次性"; }
+    const workoutTemplates = {
+      strengthA: { title: "力量 A｜下肢基础 + 拉", category: "力量", duration: "50–65 分钟", required: true, summary: "无痛活动范围，RPE 6–7，动作保留 2–4 次余力。", steps: [
+        { kind: "warmup", label: "热身", text: "轻松单车 8 分钟；最伟大拉伸 4 侧；墙滑 8 次。" },
+        { kind: "exercise", label: "箱式深蹲", text: "2 组 × 8–10 次；脚掌三点着地，深度以不疼为准。" },
+        { kind: "exercise", label: "胸托划船", text: "3 组 × 8–12 次；肩胛向后下，不耸肩。" },
+        { kind: "exercise", label: "中立握高位下拉", text: "2 组 × 8–12 次；不要用身体后仰借力。" },
+        { kind: "exercise", label: "坐姿腿弯举", text: "2 组 × 10–12 次；保持骨盆稳定。" },
+        { kind: "exercise", label: "死虫", text: "2 组 × 8 次/侧；腰背不要拱起。" }
+      ] },
+      strengthB: { title: "力量 B｜熟悉动作全身训练", category: "力量", duration: "60–70 分钟", required: true, summary: "明天第一节正式训练；只用熟悉动作，先找动作感，不追求大重量。", steps: [
+        { kind: "warmup", label: "热身 1｜升温", text: "单车 8 分钟，RPE 3–4；能完整说话，不冲刺。" },
+        { kind: "warmup", label: "热身 2｜活动度", text: "最伟大拉伸 4 次/侧；木棍开肩环绕 10 次；泡沫轴滚上背 60 秒。动作只到无痛范围。" },
+        { kind: "warmup", label: "热身 3｜激活", text: "臀桥 1 组 × 10 次，顶端停 2 秒；墙滑 1 组 × 8 次。" },
+        { kind: "exercise", label: "壶铃抱胸深蹲", text: "2 组 × 8–10 次；选择轻重量，下降到不疼且能保持躯干稳定的深度。" },
+        { kind: "exercise", label: "坐姿划船", text: "3 组 × 8–12 次；回程 2–3 秒，肩膀远离耳朵。组间休息 90 秒。" },
+        { kind: "exercise", label: "仰卧哑铃推胸", text: "2 组 × 8–10 次；肩胛稳定，肘部不要过度下沉。组间休息 90 秒。" },
+        { kind: "exercise", label: "哑铃罗马尼亚硬拉", text: "2 组 × 8–10 次；轻重量，臀部向后，背部保持中立；右臀不适就停止。组间休息 90 秒。" },
+        { kind: "exercise", label: "臀桥｜正式组", text: "2 组 × 10–12 次；顶端停 2 秒，感受臀部，不用腰部顶。组间休息 60 秒。" },
+        { kind: "exercise", label: "哑铃侧平举", text: "2 组 × 10–12 次；轻重量，手肘略弯，肩膀远离耳朵。组间休息 60 秒。" },
+        { kind: "stretch", label: "拉伸 1｜髋屈肌", text: "半跪髋屈肌拉伸 30 秒/侧；骨盆微收，不塌腰。" },
+        { kind: "stretch", label: "拉伸 2｜胸大肌", text: "门框胸部拉伸 30 秒/侧；肩膀下沉，不强行后拉。" },
+        { kind: "stretch", label: "拉伸 3｜腿后侧", text: "坐姿或仰卧腿后侧轻柔拉伸 30 秒/侧；不弹动、不追求碰脚。" },
+        { kind: "stretch", label: "拉伸 4｜呼吸收尾", text: "慢走 3–5 分钟，配合缓慢呼吸；确认没有头晕、胸闷或明显心慌再离开。" }
+      ] },
+      strengthC: { title: "力量 C｜全身控制 + 臀腿", category: "力量", duration: "50–65 分钟", required: true, summary: "保持动作可控；右臀不适时优先改成器械或减少幅度。", steps: [
+        { kind: "warmup", label: "热身", text: "椭圆机或单车 8 分钟；胸椎伸展 6 次；踝背屈 10 次/侧。" },
+        { kind: "exercise", label: "哈克深蹲或箱式深蹲", text: "2 组 × 8–10 次；不追求深度，膝盖跟脚尖同向。" },
+        { kind: "exercise", label: "坐姿腿弯举", text: "2 组 × 10–12 次；动作平稳，不弹起。" },
+        { kind: "exercise", label: "单臂支撑哑铃划船", text: "2 组 × 8–10 次/侧；先稳定躯干，再拉重量。" },
+        { kind: "exercise", label: "上斜俯卧撑或器械胸推", text: "2 组 × 8–12 次；肩不前冲。" },
+        { kind: "exercise", label: "臀外展器械", text: "2 组 × 12–15 次；不要用摆动借力。" },
+        { kind: "exercise", label: "鸟狗", text: "2 组 × 8 次/侧；骨盆保持水平。" }
+      ] },
+      swimTechnique: { title: "游泳 A｜自由泳换气技术", category: "游泳", duration: "35–45 分钟", required: true, summary: "25 米池；以顺畅换气为目标，不追求连续距离。", steps: [
+        { kind: "swim", label: "热身", text: "4 × 25 米蛙泳，轻松；每组休息 20 秒。" },
+        { kind: "drill", label: "水下吐气", text: "4 × 25 米 Drill；脸入水后缓慢吐气，侧转吸气；每组休息 30 秒。" },
+        { kind: "drill", label: "侧转练习", text: "4 × 25 米 Drill；头顶贴近水面，只转脸，不抬头；每组休息 30–40 秒。" },
+        { kind: "swim", label: "短自由泳", text: "8 × 25 米自由泳，能保持动作就停；每组休息 30–40 秒。" },
+        { kind: "swim", label: "混合收尾", text: "4 × 25 米，蛙泳/自由泳交替；轻松完成。" }
+      ] },
+      bikeOptional: { title: "可选｜轻松公路车", category: "骑行", duration: "60–90 分钟", required: false, summary: "平路、RPE 4–5；右臀出现疼痛就结束，不补课。", steps: [
+        { kind: "bike", label: "耐力骑", text: "全程能说完整句子；每 30–45 分钟起身活动；不做冲刺和爬坡。" }
+      ] },
+      rest: { title: "恢复/休息", category: "恢复", duration: "10–30 分钟", required: false, summary: "不补课；优先睡眠、早餐、散步和活动度。", steps: [
+        { kind: "recovery", label: "轻柔活动", text: "散步或活动度 10–30 分钟；无痛范围内完成即可。" }
+      ] },
+      restUnavailable: { title: "休息｜工商大学上课", category: "恢复", duration: "全天安排", required: false, summary: "今天 9:30–17:00 签到上课，不训练；不补课，优先吃饭、喝水和睡眠。", steps: [
+        { kind: "recovery", label: "今日安排", text: "全天上课；如果有空只做轻松走动和颈肩活动度，不安排正式训练。" }
+      ] }
+    };
+    function dateFromKey(key) { const parts = key.split("-").map(Number); return new Date(parts[0], parts[1] - 1, parts[2], 12); }
+    function dateKey(date) { return [date.getFullYear(), String(date.getMonth() + 1).padStart(2, "0"), String(date.getDate()).padStart(2, "0")].join("-"); }
+    function addDate(key, days) { const date = dateFromKey(key); date.setDate(date.getDate() + days); return dateKey(date); }
+    function builtInPlanEntries() {
+      const entries = [];
+      for (let key = "2026-08-06"; key <= "2026-09-05"; key = addDate(key, 1)) {
+        const day = dateFromKey(key).getDay();
+        const templateId = key === "2026-08-06" ? "restUnavailable" : key === "2026-08-08" ? "strengthB" : day === 1 ? "strengthA" : day === 2 ? "swimTechnique" : day === 4 ? "strengthB" : day === 6 ? "strengthC" : day === 0 ? "bikeOptional" : "rest";
+        entries.push({ date: key, templateId: templateId, ...workoutTemplates[templateId] });
+      }
+      return entries;
+    }
+    function planEntries() {
+      const overrides = state.workoutPlan?.entries || {};
+      const base = builtInPlanEntries().map(function(entry) { return overrides[entry.date] ? { ...entry, ...overrides[entry.date], steps: overrides[entry.date].steps || entry.steps } : entry; });
+      const extra = Object.keys(overrides).filter(function(key) { return !base.some(function(entry) { return entry.date === key; }); }).map(function(key) { return { date: key, templateId: "custom", title: "自定义训练计划", category: "其他", duration: "按状态调整", required: false, summary: "自定义计划", steps: [], ...overrides[key] }; });
+      return base.concat(extra).sort(function(a, b) { return a.date.localeCompare(b.date); });
+    }
+    function formatPlanDate(key) { return new Intl.DateTimeFormat("zh-CN", { month: "numeric", day: "numeric", weekday: "short" }).format(dateFromKey(key)); }
+    function entryForDate(key) { return planEntries().find(entry => entry.date === key) || { date: key, templateId: "rest", ...workoutTemplates.rest }; }
+    function currentPlanEntry() { const entries = planEntries(); return entries.find(entry => entry.date >= today()) || entries[entries.length - 1]; }
+    function viewedPlanEntry() { const selected = state.workoutViewDate && entryForDate(state.workoutViewDate); return selected || currentPlanEntry(); }
+    function logForDate(key) { return state.workoutLogs[key] || {}; }
+    function requiredEntries() { return planEntries().filter(entry => entry.required); }
+    function workoutProgress() { const all = requiredEntries(); const done = all.filter(entry => logForDate(entry.date).status === "done").length; return { done: done, total: all.length, percent: all.length ? Math.round(done / all.length * 100) : 0 }; }
+    function renderTrainingSteps(entry) { return '<div class="training-steps">' + entry.steps.map(function(step, index) { return '<div class="training-step"><b>' + (index + 1) + '</b><span><strong>' + escapeHtml(step.label) + '</strong> · ' + escapeHtml(step.text) + '</span></div>'; }).join("") + '</div>'; }
+    function renderWorkoutWeek() {
+      const start = currentPlanEntry().date;
+      const first = dateFromKey(start); first.setDate(first.getDate() - ((first.getDay() + 6) % 7));
+      return Array.from({ length: 7 }, function(_, index) { const key = dateKey(new Date(first.getFullYear(), first.getMonth(), first.getDate() + index, 12)); const entry = entryForDate(key); const log = logForDate(key); return '<button class="week-day ' + (key === today() ? "today " : "") + (key === state.workoutViewDate ? "selected-day " : "") + (log.status === "done" ? "completed-day" : "") + '" data-workout-day="' + key + '"><small>' + new Intl.DateTimeFormat("zh-CN", { weekday: "short" }).format(dateFromKey(key)) + '</small><strong>' + Number(key.slice(-2)) + '</strong><i class="' + (entry && (entry.required || log.status === "done") ? "on" : "") + '"></i></button>'; }).join("");
+    }
+    function renderTrainingPlan() {
+      const entry = viewedPlanEntry();
+      const progress = workoutProgress();
+      const log = logForDate(entry.date);
+      return '<section><div class="section-head"><div><div class="section-label">运动管理 · 月度目标 → 周计划 → 日任务</div><h3>点日期查看当天内容</h3></div><div class="training-actions"><button class="ghost-btn compact" data-action="edit-workout-plan" data-workout-date="' + entry.date + '">编辑本日计划</button><button class="primary-btn compact" data-action="edit-workout-plan">＋ 新增日期计划</button></div></div><div class="panel"><div class="week-strip">' + renderWorkoutWeek() + '</div><div class="training-overview" style="margin-top:14px"><div class="training-card today-card"><div class="panel-head"><div><small class="section-label">已选择 · ' + formatPlanDate(entry.date) + '</small><h4>' + escapeHtml(entry.title) + '</h4></div><span class="training-chip">' + escapeHtml(entry.duration) + '</span></div><p>' + escapeHtml(entry.summary) + '</p>' + renderTrainingSteps(entry) + '<div class="training-actions"><button class="primary-btn compact" data-action="open-workout-log" data-workout-date="' + entry.date + '">' + (log.status === "done" ? "更新本次记录" : "记录本次训练") + '</button><button class="ghost-btn compact" data-action="show-workout-note" data-workout-date="' + entry.date + '">安全规则</button></div></div><div class="training-card training-progress"><div><small class="section-label">必做完成率</small><strong>' + progress.percent + '%</strong><p>已完成 ' + progress.done + ' / ' + progress.total + ' 次。训练计划可以随时编辑。</p></div><div class="detail-note">头晕、眼前发黑、胸闷、明显心慌立即停止；右臀痛超过 3 分就改动作。游泳不空腹、不独自做高强度训练。</div></div></div></div></section>';
+    }
+    function renderHealthV2() {
+      const height = Number(state.metrics.height || 0);
+      const weight = Number(state.metrics.weight || 0);
+      const bmi = height && weight ? (weight / Math.pow(height / 100, 2)).toFixed(1) : "—";
+      const cups = Number(state.water[today()] || 0);
+      const meals = state.meals[today()] || [false, false, false];
+      return '<section><div class="section-head"><div><div class="section-label">身体档案</div><h3>身体也需要一个工作台</h3></div><p>只记录真实变化，不追求每天完美。</p></div><div class="panel"><div class="metric-grid"><div class="metric"><small>身高</small><input data-metric="height" value="' + escapeHtml(state.metrics.height) + '"><span class="unit">cm</span></div><div class="metric"><small>体重</small><input data-metric="weight" value="' + escapeHtml(state.metrics.weight) + '"><span class="unit">kg</span></div><div class="metric"><small>体脂率</small><input data-metric="bodyFat" value="' + escapeHtml(state.metrics.bodyFat) + '" placeholder="待记录"><span class="unit">%</span></div><div class="metric"><small>当前 BMI</small><strong>' + bmi + '</strong><span class="unit">根据身高体重计算</span></div></div><div class="detail-note" style="margin-top:13px">目标可选：' + (state.metrics.targetWeight ? "目标体重 " + escapeHtml(state.metrics.targetWeight) + " kg" : "还没有设置目标，不影响使用") + '。身材管理放在身体档案，不重复塞进运动模块。</div></div></section>' + renderTrainingPlan() + '<section><div class="section-head"><div><div class="section-label">日常记录</div><h3>饮水和三餐</h3></div><p>今天的记录会回到卫健委总览。</p></div><div class="split-grid"><div class="panel"><div class="panel-head"><strong>喝水打卡</strong><span>今天目标 1500 ml</span></div><div class="water-head"><strong>' + cups + ' / 8</strong><span>每格约一杯</span></div><div class="water-cups">' + Array.from({ length: 8 }, function(_, index) { return '<button class="cup ' + (index < cups ? "filled" : "") + '" data-water="' + (index + 1) + '" aria-label="喝水到第 ' + (index + 1) + ' 杯"></button>'; }).join("") + '</div><div class="water-actions"><button class="ghost-btn compact" data-action="water-minus">− 一杯</button><button class="primary-btn compact" data-action="water-plus">＋ 一杯</button></div></div><div class="panel"><div class="panel-head"><strong>三餐记录</strong><span>今天好好吃饭</span></div><div class="meal-list">' + ["早餐", "午餐", "晚餐"].map(function(name, index) { return '<label class="meal ' + (meals[index] ? "done" : "") + '"><input type="checkbox" data-meal="' + index + '" ' + (meals[index] ? "checked" : "") + '> ' + name + '</label>'; }).join("") + '</div></div></div></section>';
+    }
+    function renderBodyRecordPanel() {
+      const latest = state.bodyRecords.length ? state.bodyRecords[state.bodyRecords.length - 1] : null;
+      const height = Number((latest && latest.height) || state.metrics.height || 0);
+      const weight = Number((latest && latest.weight) || state.metrics.weight || 0);
+      const bodyFat = (latest && latest.bodyFat) || state.metrics.bodyFat || "待记录";
+      const bmi = height && weight ? (weight / Math.pow(height / 100, 2)).toFixed(1) : "—";
+      const history = state.bodyRecords.slice().reverse().slice(0, 5).map(function(record) { return '<div class="record-row"><div><strong>' + escapeHtml(record.date) + '</strong><span>' + escapeHtml(record.weight || "—") + ' kg · BMI ' + escapeHtml(record.bmi || "—") + '</span><small>' + (record.photos?.length ? "已记录照片" : "未上传照片") + (record.note ? " · " + escapeHtml(record.note) : "") + '</small></div><button class="ghost-btn compact" data-action="edit-body-record" data-record-id="' + record.id + '">编辑</button></div>'; }).join("");
+      return '<section><div class="section-head"><div><div class="section-label">身体档案</div><h3>身体也需要一份可回看的记录</h3></div><div class="training-actions"><button class="ghost-btn compact" data-action="manage-modules" data-dept="health">管理子模块</button><button class="primary-btn compact" data-action="add-body-record">＋ 新记录身体数据</button></div></div><div class="panel"><div class="metric-grid"><div class="metric"><small>身高</small><strong>' + escapeHtml(height || "—") + '</strong><span class="unit">cm</span></div><div class="metric"><small>体重</small><strong>' + escapeHtml(weight || "—") + '</strong><span class="unit">kg</span></div><div class="metric"><small>体脂率</small><strong>' + escapeHtml(bodyFat) + '</strong><span class="unit">%</span></div><div class="metric"><small>当前 BMI</small><strong>' + bmi + '</strong><span class="unit">根据最新记录计算</span></div></div><div class="detail-note" style="margin-top:13px">身体档案按日期保存，不会覆盖过去记录；正面、侧面、背面照片均可选。</div>' + (history ? '<div class="record-history"><div class="section-label">最近记录</div>' + history + '</div>' : '<div class="empty" style="margin-top:14px">还没有身体记录，点击“新记录身体数据”开始。</div>') + '</div></section>';
+    }
+    function renderHealthV2() {
+      const cups = Number(state.water[today()] || 0);
+      const target = Number(state.waterTarget || 8);
+      const meals = state.meals[today()] || [false, false, false];
+      return renderBodyRecordPanel() + renderTrainingPlan() + '<section><div class="section-head"><div><div class="section-label">饮食饮水</div><h3>饮水和三餐</h3></div><p>饮水记录是唯一来源，办公厅喝水任务会自动跟随。</p></div><div class="split-grid"><div class="panel"><div class="panel-head"><strong>喝水打卡</strong><span>今日目标 ' + target + ' 杯</span></div><div class="water-head"><strong>' + cups + ' / ' + target + '</strong><span>' + (cups >= target ? "今日目标已完成" : "还差 " + (target - cups) + " 杯") + '</span></div><div class="water-cups">' + Array.from({ length: target }, function(_, index) { return '<button class="cup ' + (index < cups ? "filled" : "") + '" data-water="' + (index + 1) + '" aria-label="喝水到第 ' + (index + 1) + ' 杯"></button>'; }).join("") + '</div><div class="water-actions"><button class="ghost-btn compact" data-action="water-minus">− 一杯</button><button class="primary-btn compact" data-action="water-plus">＋ 一杯</button><button class="ghost-btn compact" data-action="edit-water-target">设置目标</button></div></div><div class="panel"><div class="panel-head"><strong>三餐记录</strong><span>今天好好吃饭</span></div><div class="meal-list">' + ["早餐", "午餐", "晚餐"].map(function(name, index) { return '<label class="meal ' + (meals[index] ? "done" : "") + '"><input type="checkbox" data-meal="' + index + '" ' + (meals[index] ? "checked" : "") + '> ' + name + '</label>'; }).join("") + '</div><button class="ghost-btn compact" style="margin-top:10px" data-action="analyze-meal">📷 AI 识别这一餐</button><div class="detail-note" style="margin-top:10px">照片会发送到云端识别，原图不长期保存；识别结果需要确认后才会保存。</div></div></div></section>';
+    }
+    function renderWorkoutLogModal() {
+      const entry = entryForDate(modal.date);
+      const log = logForDate(modal.date);
+      const exercises = entry.steps.filter(step => step.kind === "exercise");
+      const exerciseLogs = log.exercises || [];
+      return '<div class="modal-backdrop" data-close><div class="modal" onclick="event.stopPropagation()"><div class="modal-head"><div><div class="section-label">训练记录 · ' + formatPlanDate(modal.date) + '</div><h3>' + escapeHtml(entry.title) + '</h3></div><button class="close" data-close>×</button></div><div class="detail-note">记录完成情况即可，不需要每次完美。若出现头晕、眼前发黑、胸闷或明显心慌，请选择“跳过/中止”并停止训练。</div><div class="form-grid" style="margin-top:14px"><div class="form-row"><div class="form-field"><label>睡眠时长（小时）</label><input id="workout-sleep" type="number" min="0" max="16" step="0.1" value="' + escapeHtml(log.sleep || "") + '" placeholder="例如 7.5"></div><div class="form-field"><label>本次 RPE（0–10）</label><input id="workout-rpe" type="number" min="0" max="10" step="1" value="' + escapeHtml(log.rpe || "") + '" placeholder="目标 6–7"></div></div><div class="form-row"><div class="form-field"><label>疼痛分值（0–10）</label><input id="workout-pain" type="number" min="0" max="10" step="1" value="' + escapeHtml(log.pain || "") + '" placeholder="右臀/其他"></div><div class="form-field"><label>完成状态</label><select id="workout-status"><option value="done" ' + (log.status !== "skipped" ? "selected" : "") + '>完成</option><option value="skipped" ' + (log.status === "skipped" ? "selected" : "") + '>跳过/中止</option></select></div></div>' + (exercises.length ? '<div><div class="section-label" style="margin-bottom:9px">动作记录</div><div class="log-grid">' + exercises.map(function(exercise, index) { const item = exerciseLogs[index] || {}; return '<div class="log-exercise"><strong>' + escapeHtml(exercise.label) + '</strong><div class="form-row"><div><span class="log-label">组数</span><input id="workout-sets-' + index + '" type="number" min="0" step="1" value="' + escapeHtml(item.sets || "") + '" placeholder="2"></div><div><span class="log-label">次数</span><input id="workout-reps-' + index + '" type="text" value="' + escapeHtml(item.reps || "") + '" placeholder="8–12"></div></div><div style="margin-top:7px"><span class="log-label">重量/阻力</span><input id="workout-weight-' + index + '" type="text" value="' + escapeHtml(item.weight || "") + '" placeholder="器械档位或 kg"></div></div>'; }).join("") + '</div></div>' : '<div class="detail-note">本次是游泳/骑行/恢复训练，记录睡眠、RPE、疼痛和备注即可。</div>') + '<div class="form-field"><label>备注</label><textarea id="workout-note" placeholder="换气、动作、右臀、头晕或其他感受">' + escapeHtml(log.notes || "") + '</textarea></div></div><div class="modal-actions"><button class="ghost-btn" data-close>取消</button><button class="primary-btn" data-action="save-workout-log">保存记录</button></div></div></div>';
+    }
     function navItem(dept, mobile) {
       const p = dept.id === "office" ? progress() : { total: state.tasks.filter(task => task.department === dept.id).length, completed: 0 };
       return '<button class="nav-item ' + (state.activeDepartment === dept.id ? "active" : "") + '" data-nav="' + dept.id + '"><span class="nav-avatar">' + avatar(dept) + '</span><span class="nav-copy"><strong>' + dept.title + '</strong><small>' + dept.subtitle + '</small></span><span class="nav-count">' + (dept.id === "office" ? p.completed + "/" + p.total : dept.modules.length) + '</span></button>';
@@ -455,10 +673,17 @@
     function renderQuickTasks() {
       return departments.filter(item => item.id !== "office").map(function(dept) {
         const tasks = state.tasks.filter(task => task.department === dept.id);
+        const modules = modulesFor(dept.id);
         if (!tasks.length) return "";
-        return '<div class="quick-group">' + dept.title + ' · ' + dept.subtitle + '</div>' + tasks.map(function(task) {
-          return '<div class="quick-item"><input type="checkbox" id="quick-' + task.id + '" data-select="' + task.id + '" ' + (selectedToday(task) ? "checked" : "") + '><label for="quick-' + task.id + '">' + escapeHtml(task.title) + '<small>' + escapeHtml(task.detail) + '</small></label><button class="x-button" data-delete-task="' + task.id + '" title="移入回收站">×</button></div>';
+        const open = state.taskLibraryOpen?.[dept.id] !== false;
+        const moduleRows = modules.map(function(module) {
+          const moduleTasks = tasks.filter(task => task.moduleId === module.id || task.tag === module.name);
+          if (!moduleTasks.length) return "";
+          return '<div class="quick-subgroup"><span>' + escapeHtml(module.name) + '</span>' + moduleTasks.map(function(task) {
+            return '<div class="quick-item"><input type="checkbox" id="quick-' + task.id + '" data-select="' + task.id + '" ' + (selectedToday(task) ? "checked" : "") + '><label for="quick-' + task.id + '">' + escapeHtml(task.title) + '<small>' + escapeHtml(task.detail) + '</small></label><button class="x-button" data-delete-task="' + task.id + '" title="移入回收站">×</button></div>';
+          }).join("") + '</div>';
         }).join("");
+        return '<details class="quick-dept" data-task-library="' + dept.id + '" ' + (open ? "open" : "") + '><summary><span>' + dept.title + ' · ' + dept.subtitle + '</span><small>' + tasks.filter(selectedToday).length + ' 项今日</small></summary>' + (moduleRows || '<div class="empty">这个部门还没有任务。</div>') + '</details>';
       }).join("") || '<div class="empty">任务库还是空的。</div>';
     }
     function renderDeptCard(dept) {
@@ -466,13 +691,13 @@
       return '<button class="dept-card ' + dept.color + ' ' + (dept.id === "office" ? "art-card" : "") + '" data-nav="' + dept.id + '"><span class="dept-avatar">' + avatar(dept) + '</span><span><h4>' + dept.title + '｜' + dept.subtitle + '</h4><p>' + dept.desc + '</p><span class="card-foot">' + count + ' 个模块 →</span></span></button>';
     }
     function renderDepartment(dept) {
-      if (dept.id === "finance" || dept.id === "culture") return renderComing(dept);
-      const moduleCards = (dept.modules || []).map(function(module) {
-        return '<button class="module-card" data-action="open-module" data-dept="' + dept.id + '" data-module="' + module + '"><div class="module-top"><span class="module-avatar">' + (moduleIcons[module] || "○") + '</span><span class="section-label">' + String((dept.modules || []).indexOf(module) + 1).padStart(2, "0") + '</span></div><h4>' + module + '</h4><p>' + moduleDesc[module] + '</p><span class="module-foot"><span>' + moduleAction(module) + '</span><span>进入 →</span></span></button>';
+      const moduleCards = modulesFor(dept.id).map(function(module, index) {
+        return '<button class="module-card" data-action="open-module" data-dept="' + dept.id + '" data-module="' + escapeHtml(module.name) + '"><div class="module-top"><span class="module-avatar">' + (module.icon || "○") + '</span><span class="section-label">' + String(index + 1).padStart(2, "0") + '</span></div><h4>' + escapeHtml(module.name) + '</h4><p>' + escapeHtml(module.description || moduleDesc[module.name] || "记录和推进这个方向") + '</p><span class="module-foot"><span>' + moduleAction(module.name) + '</span><span>进入 →</span></span></button>';
       }).join("");
-      const body = dept.id === "education" ? renderEducation() : dept.id === "health" ? renderHealth() : renderDevelopment();
+      const body = dept.id === "education" ? renderEducation() : dept.id === "health" ? renderHealth() : dept.id === "development" ? renderDevelopment() : renderGenericDepartment(dept);
+      const showCards = dept.id !== "health";
       return renderTop(dept, "02 · " + dept.title + " / " + dept.subtitle, dept.title + "｜" + dept.subtitle, dept.desc + "。从总览进入具体模块，不再让左右两侧割裂。") +
-        '<section><div class="section-head"><div><div class="section-label">模块总览</div><h3>' + dept.title + '的' + dept.modules.length + '个入口</h3></div><p>点击一个模块，进入它的任务和记录。</p></div><div class="dept-summary">' + moduleCards + '</div></section>' + body;
+        (showCards ? '<section><div class="section-head"><div><div class="section-label">模块总览</div><h3>' + dept.title + '的' + modulesFor(dept.id).length + '个入口</h3></div><div class="training-actions"><p>点击一个模块，进入它的任务和记录。</p><button class="ghost-btn compact" data-action="manage-modules" data-dept="' + dept.id + '">管理子模块</button></div></div><div class="dept-summary">' + moduleCards + '</div></section>' : '') + body;
     }
     function moduleAction(module) {
       return ({ "英语学习": "今日学习", "阅读进度": "继续阅读", "学习项目": "查看项目", "身体档案": "更新数据", "运动管理": "查看计划", "饮食饮水": "今日记录", "长期目标": "查看目标", "自媒体": "分析灵感" })[module] || "即将开放";
@@ -485,18 +710,22 @@
       const books = state.books.length ? '<div class="book-list">' + state.books.map(function(book) {
         return '<div class="book-item"><div class="book-row"><div><strong>' + escapeHtml(book.title) + '</strong><p>' + escapeHtml(book.author || "未填写作者") + ' · ' + escapeHtml(book.source || "手动创建") + '</p></div><strong style="color:var(--green)">' + Number(book.progress || 0) + '%</strong></div><div class="book-progress"><div class="progress-bar"><i style="width:' + Number(book.progress || 0) + '%"></i></div></div><div class="book-actions"><button class="ghost-btn compact" data-book="' + book.id + '">继续阅读</button><button class="ghost-btn compact" data-edit-book="' + book.id + '">更新进度</button></div></div>';
       }).join("") + '</div>' : '<div class="empty">还没有书籍。可以导入 EPUB / PDF / TXT，或先手动创建一本书。</div>';
-      return '<section><div class="section-head"><div><div class="section-label">学习进度</div><h3>英语与阅读，一起慢慢积累</h3></div><button class="primary-btn compact" data-action="add-book">＋ 添加书籍</button></div><div class="split-grid"><div class="panel"><div class="panel-head"><strong>英语学习</strong><span>今日任务来自办公厅</span></div><div class="detail-note">把英语拆成听力、单词、口语或阅读中的一个闭环，每天只需要完成一个小动作。</div><div class="task-list" style="margin-top:10px">' + state.tasks.filter(task => task.department === "education" && task.tag === "英语学习").map(renderCompactTask).join("") + '</div></div><div class="panel"><div class="panel-head"><strong>阅读进度</strong><span>可离线阅读记录</span></div>' + books + '</div></div></section>';
+      return '<section><div class="section-head"><div><div class="section-label">学习进度</div><h3>教育部的学习项目</h3></div><button class="primary-btn compact" data-action="add-book">＋ 添加书籍</button></div><div class="module-stack">' + modulesFor("education").map(function(module) { const tasks = state.tasks.filter(task => task.department === "education" && (task.moduleId === module.id || task.tag === module.name)); const extra = module.name === "阅读进度" ? books : '<div class="task-list">' + (tasks.map(renderCompactTask).join("") || '<div class="empty">这个子模块还没有任务。</div>') + '</div>'; return '<article class="panel module-section"><div class="panel-head"><div><strong>' + escapeHtml(module.name) + '</strong><p class="module-hint">' + escapeHtml(module.description) + '</p></div><button class="ghost-btn compact" data-action="add-task" data-dept="education" data-tag="' + escapeHtml(module.name) + '">＋ 新增</button></div>' + extra + '</article>'; }).join("") + '</div></section>';
     }
     function renderCompactTask(task) {
       return '<div class="task-row ' + (completedToday(task) ? "done" : "") + '"><button class="check" data-task="' + task.id + '"></button><div><div class="task-title">' + escapeHtml(task.title) + '</div><div class="task-meta"><span class="task-tag">' + escapeHtml(task.detail) + '</span></div></div><div class="task-actions"><button data-edit-task="' + task.id + '">编辑</button></div></div>';
     }
     function renderHealth() {
+      return renderHealthV2();
       const height = Number(state.metrics.height || 0);
       const weight = Number(state.metrics.weight || 0);
       const bmi = height && weight ? (weight / Math.pow(height / 100, 2)).toFixed(1) : "—";
       const cups = Number(state.water[today()] || 0);
       const meals = state.meals[today()] || [false, false, false];
       return '<section><div class="section-head"><div><div class="section-label">身体档案</div><h3>身体也需要一个工作台</h3></div><p>只记录真实变化，不追求每天完美。</p></div><div class="panel"><div class="metric-grid"><div class="metric"><small>身高</small><input data-metric="height" value="' + escapeHtml(state.metrics.height) + '"><span class="unit">cm</span></div><div class="metric"><small>体重</small><input data-metric="weight" value="' + escapeHtml(state.metrics.weight) + '"><span class="unit">kg</span></div><div class="metric"><small>体脂率</small><input data-metric="bodyFat" value="' + escapeHtml(state.metrics.bodyFat) + '" placeholder="待记录"><span class="unit">%</span></div><div class="metric"><small>当前 BMI</small><strong>' + bmi + '</strong><span class="unit">根据身高体重计算</span></div></div><div class="detail-note" style="margin-top:13px">目标可选：' + (state.metrics.targetWeight ? "目标体重 " + escapeHtml(state.metrics.targetWeight) + " kg" : "还没有设置目标，不影响使用") + '。身材管理放在身体档案，不重复塞进运动模块。</div></div></section><section><div class="section-head"><div><div class="section-label">运动管理</div><h3>月度目标 → 周计划 → 日任务</h3></div><button class="ghost-btn compact" data-action="open-module" data-dept="health" data-module="运动管理">查看运动计划</button></div><div class="panel"><div class="goal-item"><div><strong>本月让身体保持在线</strong><p>训练日、恢复日和休息日都算计划的一部分。</p><div class="goal-progress"><div class="progress-bar"><i style="width:42%"></i></div><small>本周完成 2 / 5 次 · 适应期</small></div></div><span>42%</span></div></div></section><section><div class="section-head"><div><div class="section-label">日常记录</div><h3>饮水和三餐</h3></div><p>今天的记录会回到卫健委总览。</p></div><div class="split-grid"><div class="panel"><div class="panel-head"><strong>喝水打卡</strong><span>今日目标 1500 ml</span></div><div class="water-head"><strong>' + cups + ' / 8</strong><span>每格约一杯</span></div><div class="water-cups">' + Array.from({ length: 8 }, function(_, index) { return '<button class="cup ' + (index < cups ? "filled" : "") + '" data-water="' + (index + 1) + '" aria-label="喝水到第 ' + (index + 1) + ' 杯"></button>'; }).join("") + '</div><div class="water-actions"><button class="ghost-btn compact" data-action="water-minus">− 一杯</button><button class="primary-btn compact" data-action="water-plus">＋ 一杯</button></div></div><div class="panel"><div class="panel-head"><strong>三餐记录</strong><span>今天好好吃饭</span></div><div class="meal-list">' + ["早餐", "午餐", "晚餐"].map(function(name, index) { return '<label class="meal ' + (meals[index] ? "done" : "") + '"><input type="checkbox" data-meal="' + index + '" ' + (meals[index] ? "checked" : "") + '> ' + name + '</label>'; }).join("") + '</div></div></div></section>';
+    }
+    function renderGenericDepartment(dept) {
+      return '<section><div class="section-head"><div><div class="section-label">' + dept.title + '记录</div><h3>把记录变成可继续使用的资料</h3></div><p>每个子模块都有自己的任务和记录。</p></div><div class="module-stack">' + modulesFor(dept.id).map(function(module) { const tasks = state.tasks.filter(task => task.department === dept.id && (task.moduleId === module.id || task.tag === module.name)); return '<article class="panel module-section"><div class="panel-head"><div><strong>' + escapeHtml(module.name) + '</strong><p class="module-hint">' + escapeHtml(module.description) + '</p></div><button class="ghost-btn compact" data-action="add-task" data-dept="' + dept.id + '" data-tag="' + escapeHtml(module.name) + '">＋ 新增</button></div><div class="task-list">' + (tasks.map(renderCompactTask).join("") || '<div class="empty">还没有记录，从一个小动作开始。</div>') + '</div></article>'; }).join("") + '</div></section>';
     }
     function renderDevelopment() {
       return '<section><div class="section-head"><div><div class="section-label">长期目标</div><h3>把想法变成可以推进的项目</h3></div><button class="primary-btn compact" data-action="add-goal">＋ 新增目标</button></div><div class="panel"><div class="goal-list">' + state.goals.map(function(goal) { return '<div class="goal-item"><div><strong>' + escapeHtml(goal.title) + '</strong><p>' + escapeHtml(goal.note || "年度目标 → 季度重点 → 具体项目") + '</p><div class="goal-progress"><div class="progress-bar"><i style="width:' + Number(goal.progress || 0) + '%"></i></div><small>' + escapeHtml(goal.status || "进行中") + ' · ' + Number(goal.progress || 0) + '%</small></div></div><button class="ghost-btn compact" data-edit-goal="' + goal.id + '">编辑</button></div>'; }).join("") + '</div></div></section>' +
@@ -513,10 +742,95 @@
       const common = '<div class="modal-head"><div><div class="section-label">' + dept.title + ' / ' + dept.subtitle + '</div><h3>' + module + '</h3></div><button class="close" data-close>×</button></div>';
       if (module === "阅读进度") return '<div class="modal-backdrop" data-close><div class="modal" onclick="event.stopPropagation()">' + common + '<div class="detail-note">支持导入 EPUB / PDF / TXT，记录阅读位置、书签、划线和笔记。当前是本地测试版，文件元数据保存在浏览器中。</div><div class="modal-actions"><button class="primary-btn" data-action="add-book">＋ 添加书籍</button></div></div></div>';
       if (module === "自媒体") return '<div class="modal-backdrop" data-close><div class="modal" onclick="event.stopPropagation()">' + common + '<p class="radar-intro">把链接、正文或截图交给后端解析服务。平台需要登录时，用文字补充仍然可以生成初步拆解。</p><div class="capture"><input id="modal-radar-url" placeholder="粘贴抖音 / 小红书链接"><button class="primary-btn compact" data-action="analyze-inspiration" data-input-id="modal-radar-url">开始拆解</button></div><div class="detail-note">当前不会自动爬取平台，也不会记录发布数据；你提供一条内容，工作台帮你整理爆点、结构、二创角度和下次优化。</div><div class="modal-actions"><button class="primary-btn" data-action="add-inspiration">打开完整分析表</button></div></div></div>';
-      if (module === "运动管理") return '<div class="modal-backdrop" data-close><div class="modal" onclick="event.stopPropagation()">' + common + '<div class="detail-note">月度目标拆成周计划，再落到今天。训练日、恢复日和休息日都在同一个计划里，不再重复设置“身材管理”。</div><div class="goal-list" style="margin-top:14px"><div class="goal-item"><div><strong>本月适应期</strong><p>周一训练 · 周二恢复 · 周三训练 · 周四恢复 · 周五训练 · 周六训练 · 周日休息</p></div><span>第 1 周</span></div></div></div></div>';
-      return '<div class="modal-backdrop" data-close><div class="modal" onclick="event.stopPropagation()">' + common + '<div class="detail-note">' + moduleDesc[module] + '。这里会承接该模块的任务、记录和后续扩展字段。</div><div class="modal-actions"><button class="primary-btn" data-action="add-task" data-dept="' + deptId + '" data-tag="' + module + '">＋ 新增任务</button></div></div></div>';
+      if (module === "运动管理") { const entries = planEntries(); return '<div class="modal-backdrop" data-close><div class="modal modal-wide" onclick="event.stopPropagation()">' + common + '<div class="detail-note">这里同时查看月度目标、每周节奏和每天的详细计划。未来计划、已导入计划都可以编辑；过去日期保留训练记录。</div><div class="training-calendar">' + entries.map(function(entry) { const log = logForDate(entry.date); return '<div class="plan-row ' + (entry.date === today() ? "today-plan" : "") + '"><div><strong>' + formatPlanDate(entry.date) + '</strong><span>' + escapeHtml(entry.title) + '</span><small>' + escapeHtml(entry.duration) + ' · ' + (entry.required ? "必做" : "可选/恢复") + (log.status === "done" ? " · 已完成" : "") + '</small></div><div class="training-actions"><button class="ghost-btn compact" data-action="edit-workout-plan" data-workout-date="' + entry.date + '">编辑</button><button class="ghost-btn compact" data-action="open-workout-log" data-workout-date="' + entry.date + '">记录</button></div></div>'; }).join("") + '</div></div></div>'; }
+      const moduleTasks = state.tasks.filter(function(task) { return task.department === deptId && (task.moduleId === moduleId(deptId, module) || task.tag === module); });
+      return '<div class="modal-backdrop" data-close><div class="modal" onclick="event.stopPropagation()">' + common + '<div class="detail-note">' + (moduleDesc[module] || "这个子模块") + '。这里展示任务库中的全部任务，是否加入今日计划由你单独选择。</div><div class="task-list module-modal-tasks">' + (moduleTasks.map(renderCompactTask).join("") || '<div class="empty">这个子模块还没有任务。</div>') + '</div><div class="modal-actions"><button class="primary-btn" data-action="add-task" data-dept="' + deptId + '" data-tag="' + module + '">＋ 新增任务</button></div></div></div>';
+    }
+    function renderTaskModuleSelect(task) {
+      const deptId = task.department || modal.dept || "education";
+      const selected = task.moduleId || moduleId(deptId, task.tag || modal.tag || modulesFor(deptId)[0]?.name);
+      return '<select id="task-tag" data-task-module-select>' + modulesFor(deptId).map(function(item) { return '<option value="' + escapeHtml(item.id) + '" ' + (item.id === selected ? "selected" : "") + '>' + escapeHtml(item.name) + '</option>'; }).join("") + '</select>';
+    }
+    function renderWorkoutEditModal() {
+      const entry = modal.date ? entryForDate(modal.date) : null;
+      const date = modal.date || today();
+      const source = entry || { title: "", category: "力量", duration: "", summary: "", required: true, steps: [] };
+      const steps = (source.steps || []).map(function(step) { return step.label + "｜" + step.text; }).join("\n");
+      return '<div class="modal-backdrop" data-close><div class="modal modal-wide" onclick="event.stopPropagation()"><div class="modal-head"><div><div class="section-label">运动计划编辑</div><h3>' + (entry ? "编辑当天计划" : "新增日期计划") + '</h3></div><button class="close" data-close>×</button></div><div class="form-grid"><div class="form-row"><div class="form-field"><label>日期</label><input id="plan-date" type="date" value="' + escapeHtml(date) + '"></div><div class="form-field"><label>计划类型</label><select id="plan-category"><option ' + (source.category === "力量" ? "selected" : "") + '>力量</option><option ' + (source.category === "游泳" ? "selected" : "") + '>游泳</option><option ' + (source.category === "骑行" ? "selected" : "") + '>骑行</option><option ' + (source.category === "恢复" ? "selected" : "") + '>恢复</option><option ' + (source.category === "其他" ? "selected" : "") + '>其他</option></select></div></div><div class="form-field"><label>计划名称</label><input id="plan-title" value="' + escapeHtml(source.title) + '" placeholder="例如：力量训练 A"></div><div class="form-row"><div class="form-field"><label>时长</label><input id="plan-duration" value="' + escapeHtml(source.duration) + '" placeholder="例如：45 分钟"></div><div class="form-field"><label>是否必做</label><select id="plan-required"><option value="true" ' + (source.required !== false ? "selected" : "") + '>必做</option><option value="false" ' + (source.required === false ? "selected" : "") + '>可选/恢复</option></select></div></div><div class="form-field"><label>计划说明</label><textarea id="plan-summary" placeholder="今天的目标、强度和注意事项">' + escapeHtml(source.summary) + '</textarea></div><div class="form-field"><label>动作清单（每行：动作名称｜详细说明）</label><textarea id="plan-steps" rows="8" placeholder="热身｜单车 8 分钟\n深蹲｜2 组 × 10 次">' + escapeHtml(steps) + '</textarea></div></div><div class="modal-actions"><button class="ghost-btn" data-close>取消</button><button class="primary-btn" data-action="save-workout-plan">保存计划</button></div></div></div>';
+    }
+    function saveWorkoutPlan() {
+      const date = document.getElementById("plan-date").value;
+      const title = document.getElementById("plan-title").value.trim();
+      if (!date || !title) return showToast("请填写日期和计划名称");
+      const steps = document.getElementById("plan-steps").value.split("\n").map(function(line) { const parts = line.split("｜"); return { kind: "exercise", label: (parts[0] || "训练动作").trim(), text: (parts.slice(1).join("｜") || "按舒适强度完成").trim() }; }).filter(function(item) { return item.label; });
+      state.workoutPlan.entries = state.workoutPlan.entries || {};
+      state.workoutPlan.entries[date] = { title: title, category: document.getElementById("plan-category").value, duration: document.getElementById("plan-duration").value.trim() || "按状态调整", required: document.getElementById("plan-required").value === "true", summary: document.getElementById("plan-summary").value.trim() || "按计划完成即可", steps: steps };
+      state.workoutViewDate = date;
+      persist(); modal = null; render(); showToast("运动计划已保存，可继续修改");
+    }
+    function renderBodyRecordModal() {
+      const record = modal.recordId ? state.bodyRecords.find(function(item) { return item.id === modal.recordId; }) : null;
+      return '<div class="modal-backdrop" data-close><div class="modal" onclick="event.stopPropagation()"><div class="modal-head"><div><div class="section-label">身体档案</div><h3>' + (record ? "编辑身体记录" : "新记录身体数据") + '</h3></div><button class="close" data-close>×</button></div><div class="form-grid"><div class="form-field"><label>记录日期</label><input id="body-date" type="date" value="' + escapeHtml(record?.date || today()) + '"></div><div class="form-row"><div class="form-field"><label>身高（cm）</label><input id="body-height" type="number" step="0.1" value="' + escapeHtml(record?.height || state.metrics.height || "") + '"></div><div class="form-field"><label>体重（kg）</label><input id="body-weight" type="number" step="0.1" value="' + escapeHtml(record?.weight || state.metrics.weight || "") + '"></div></div><div class="form-field"><label>体脂率（%）</label><input id="body-fat" type="number" step="0.1" value="' + escapeHtml(record?.bodyFat || state.metrics.bodyFat || "") + '"></div><div class="form-field"><label>照片（正面 / 侧面 / 背面，均可选）</label><input id="body-photos" type="file" accept="image/*" multiple><small class="form-help">照片仅用于本地记录；建议每张不超过 5MB。</small></div><div class="form-field"><label>备注</label><textarea id="body-note" placeholder="身体感受、测量环境或调整计划">' + escapeHtml(record?.note || "") + '</textarea></div></div><div class="modal-actions"><button class="ghost-btn" data-close>取消</button><button class="primary-btn" data-action="save-body-record">保存身体记录</button></div></div></div>';
+    }
+    function renderModuleManager() {
+      const dept = department(modal.dept);
+      const rows = modulesFor(modal.dept, true).map(function(item) { return '<div class="module-edit-row"><input data-module-name="' + escapeHtml(item.id) + '" value="' + escapeHtml(item.name) + '"><input data-module-desc="' + escapeHtml(item.id) + '" value="' + escapeHtml(item.description) + '"><label><input type="checkbox" data-module-archived="' + escapeHtml(item.id) + '" ' + (item.archived ? "checked" : "") + '> 归档</label></div>'; }).join("");
+      return '<div class="modal-backdrop" data-close><div class="modal modal-wide" onclick="event.stopPropagation()"><div class="modal-head"><div><div class="section-label">' + dept.title + ' · 子模块管理</div><h3>修改、归档或新增子模块</h3></div><button class="close" data-close>×</button></div><div class="detail-note">有任务或记录的子模块只能归档，不会破坏历史；归档后不再出现在新任务选择器中。</div><div class="module-manager">' + rows + '</div><div class="form-row"><input id="new-module-name" placeholder="新子模块名称"><input id="new-module-desc" placeholder="一句话说明"></div><div class="modal-actions"><button class="ghost-btn" data-close>取消</button><button class="primary-btn" data-action="save-modules">保存子模块</button></div></div></div>';
+    }
+    function saveModules() {
+      const deptId = modal.dept;
+      state.submodules[deptId] = state.submodules[deptId] || [];
+      modulesFor(deptId, true).forEach(function(item) {
+        const name = document.querySelector('[data-module-name="' + CSS.escape(item.id) + '"]')?.value.trim() || item.name;
+        const description = document.querySelector('[data-module-desc="' + CSS.escape(item.id) + '"]')?.value.trim() || item.description;
+        const archived = document.querySelector('[data-module-archived="' + CSS.escape(item.id) + '"]')?.checked || false;
+        const existing = state.submodules[deptId].find(function(entry) { return entry.id === item.id; });
+        const next = { ...item, name: name, description: description, archived: archived, builtIn: item.builtIn };
+        if (existing) Object.assign(existing, next); else if (name !== item.name || description !== item.description || archived) state.submodules[deptId].push(next);
+      });
+      const newName = document.getElementById("new-module-name").value.trim();
+      if (newName) state.submodules[deptId].push({ id: uid("module"), name: newName, description: document.getElementById("new-module-desc").value.trim() || "记录和推进这个方向", icon: "○", color: "green", archived: false, builtIn: false });
+      state.tasks.forEach(ensureTaskModule); persist(); modal = null; render(); showToast("子模块已保存");
+    }
+    async function saveBodyRecord() {
+      const height = Number(document.getElementById("body-height").value || 0);
+      const weight = Number(document.getElementById("body-weight").value || 0);
+      if (!height || !weight) return showToast("请填写身高和体重");
+      const photos = Array.from(document.getElementById("body-photos").files || []).slice(0, 3);
+      const data = [];
+      for (const file of photos) data.push(await readAsDataUrl(file));
+      const payload = { date: document.getElementById("body-date").value || today(), height: height, weight: weight, bodyFat: document.getElementById("body-fat").value || "", bmi: (weight / Math.pow(height / 100, 2)).toFixed(1), photos: data, note: document.getElementById("body-note").value.trim(), updatedAt: today() };
+      if (modal.recordId) Object.assign(state.bodyRecords.find(function(item) { return item.id === modal.recordId; }), payload);
+      else state.bodyRecords.push({ ...payload, id: uid("body") });
+      state.bodyRecords.sort(function(a, b) { return a.date.localeCompare(b.date); });
+      state.metrics = { ...state.metrics, height: height, weight: weight, bodyFat: payload.bodyFat };
+      persist(); modal = null; render(); showToast("身体记录已保存");
+    }
+    function renderMealModal() {
+      const mealNames = ["早餐", "午餐", "晚餐", "加餐"];
+      return '<div class="modal-backdrop" data-close><div class="modal" onclick="event.stopPropagation()"><div class="modal-head"><div><div class="section-label">饮食饮水 · AI 识图</div><h3>识别这一餐</h3></div><button class="close" data-close>×</button></div><div class="detail-note">照片会发送到云端识别，原图不长期保存。AI 只做估算，保存前请你确认。</div><div class="form-grid"><div class="form-field"><label>餐次</label><select id="meal-type">' + mealNames.map(function(name) { return '<option>' + name + '</option>'; }).join("") + '</select></div><div class="form-field"><label>餐食照片</label><input id="meal-image" type="file" accept="image/*" multiple><small class="form-help">支持多张照片，AI 会合并识别。</small></div><div class="form-field"><label>补充文字（可选）</label><textarea id="meal-content" placeholder="例如：一碗米饭、番茄炒蛋、少量青菜"></textarea></div></div><div class="modal-actions"><button class="ghost-btn" data-close>取消</button><button class="primary-btn" data-action="save-meal">识别并保存</button></div></div></div>';
+    }
+    async function saveMeal() {
+      const files = Array.from(document.getElementById("meal-image").files || []).slice(0, 4);
+      const content = document.getElementById("meal-content").value.trim();
+      if (!files.length && !content) return showToast("请上传餐食照片或填写餐食文字");
+      showToast("正在识别餐食…");
+      const imageData = [];
+      for (const file of files) imageData.push(await readAsDataUrl(file));
+      let result = null;
+      try { result = await api("/api/analyze-meal", { method: "POST", body: JSON.stringify({ imageData: imageData, content: content }) }); } catch (_) {}
+      const parsed = result?.result || { foods: [], totalCalories: 0, notes: "请手动确认餐食内容" };
+      const record = { id: uid("meal"), type: document.getElementById("meal-type").value, date: today(), foods: parsed.foods || [], totalCalories: Number(parsed.totalCalories || 0), notes: parsed.notes || "", confirmed: true, engine: result?.engine || "local", createdAt: today() };
+      state.mealRecords[today()] = state.mealRecords[today()] || [];
+      state.mealRecords[today()].push(record);
+      persist(); modal = null; render(); showToast(result?.engine === "model" ? "识别完成，餐食记录已保存" : "已保存餐食记录；当前为待模型确认结果");
     }
     function renderModal() {
+      if (modal.type === "workout-log") return renderWorkoutLogModal();
+      if (modal.type === "workout-edit") return renderWorkoutEditModal();
+      if (modal.type === "body-record") return renderBodyRecordModal();
+      if (modal.type === "module-manager") return renderModuleManager();
+      if (modal.type === "meal") return renderMealModal();
       if (modal.type === "module") return renderModuleDetail(modal.dept, modal.module);
       if (modal.type === "settings") return '<div class="modal-backdrop" data-close><div class="modal" onclick="event.stopPropagation()"><div class="modal-head"><h3>设置与数据</h3><button class="close" data-close>×</button></div><div class="detail-note">这是单用户本地测试版。数据保存在本机浏览器，PWA 可以离线打开；正式云端同步会在后续部署服务器后接入。</div><div class="modal-actions"><button class="primary-btn" data-action="install">安装到手机桌面</button></div><div class="modal-actions"><button class="ghost-btn" data-action="export">导出本地数据</button><label class="primary-btn"><input type="file" data-import accept="application/json" style="display:none">导入本地数据</label></div><div class="modal-actions"><button class="ghost-btn" data-action="reset-data">恢复默认示例</button></div></div></div>';
       if (modal.type === "picker") return '<div class="modal-backdrop" data-close><div class="modal" onclick="event.stopPropagation()"><div class="modal-head"><h3>管理今日任务</h3><button class="close" data-close>×</button></div><p class="radar-intro">从任务库勾选今天要做的事。任务可以编辑，也可以移入回收站。</p><div class="quick-list">' + renderQuickTasks() + '</div><div class="modal-actions"><button class="primary-btn" data-action="add-task">＋ 新增任务</button></div></div></div>';
@@ -526,7 +840,7 @@
       const editing = modal.type === "task" && modal.taskId ? state.tasks.find(item => item.id === modal.taskId) : null;
       if (isInspiration) return '<div class="modal-backdrop" data-close><div class="modal" onclick="event.stopPropagation()"><div class="modal-head"><h3>分析一条内容</h3><button class="close" data-close>×</button></div><div class="form-grid"><div class="form-field"><label>链接</label><input id="idea-url" value="' + escapeHtml(modal.url || "") + '" placeholder="抖音 / 小红书链接"></div><div class="form-row"><div class="form-field"><label>来源</label><select id="idea-source"><option>抖音</option><option>小红书</option><option>其他</option></select></div><div class="form-field"><label>形式</label><select id="idea-format"><option>视频</option><option>图文</option><option>直播</option></select></div></div><div class="form-field"><label>标题 / 主题</label><input id="idea-title" placeholder="可留空，系统会从正文中提取"></div><div class="form-field"><label>正文 / 字幕 / 图文文字</label><textarea id="idea-content" placeholder="平台限制访问时，把文字粘贴到这里"></textarea></div><div class="form-field"><label>截图（可选）</label><input id="idea-image" type="file" accept="image/*"><small style="display:block;margin-top:5px;color:var(--muted);font-size:10px">本地测试版会保留截图文件名；配置视觉模型后可继续做 OCR。</small></div><div class="form-field"><label>你希望重点优化什么</label><textarea id="idea-angle" placeholder="开头、结构、评论区、二创角度……"></textarea></div></div><div class="modal-actions"><button class="ghost-btn" data-close>取消</button><button class="primary-btn" data-action="save-inspiration">生成分析卡片</button></div></div></div>';
       const task = editing || {};
-      return '<div class="modal-backdrop" data-close><div class="modal" onclick="event.stopPropagation()"><div class="modal-head"><h3>' + (editing ? "编辑任务" : "新增任务") + '</h3><button class="close" data-close>×</button></div><div class="form-grid"><div class="form-field"><label>任务名称</label><input id="task-title" value="' + escapeHtml(task.title || "") + '" placeholder="例如：阅读 30 分钟"></div><div class="form-row"><div class="form-field"><label>所属部门</label><select id="task-dept">' + departments.filter(item => item.id !== "office").map(function(dept) { return '<option value="' + dept.id + '" ' + ((task.department || modal.dept) === dept.id ? "selected" : "") + '>' + dept.title + '｜' + dept.subtitle + '</option>'; }).join("") + '</select></div><div class="form-field"><label>子模块</label><input id="task-tag" value="' + escapeHtml(task.tag || modal.tag || "") + '" placeholder="例如：英语学习"></div></div><div class="form-field"><label>完成说明</label><textarea id="task-detail" placeholder="怎样算完成？把动作写小一点">' + escapeHtml(task.detail || "") + '</textarea></div><div class="form-row"><div class="form-field"><label>优先级</label><select id="task-priority"><option value="high" ' + (task.priority === "high" ? "selected" : "") + '>高</option><option value="medium" ' + (task.priority === "medium" || !task.priority ? "selected" : "") + '>中</option><option value="low" ' + (task.priority === "low" ? "selected" : "") + '>低</option></select></div><div class="form-field"><label>重复周期</label><select id="task-repeat"><option value="none" ' + (task.repeat === "none" || !task.repeat ? "selected" : "") + '>一次性</option><option value="daily" ' + (task.repeat === "daily" ? "selected" : "") + '>每天</option><option value="weekly" ' + (task.repeat === "weekly" ? "selected" : "") + '>每周</option><option value="monthly" ' + (task.repeat === "monthly" ? "selected" : "") + '>每月</option></select></div></div><div class="form-field"><label>截止日期（可选）</label><input id="task-due" type="date" value="' + escapeHtml(task.dueDate || "") + '"></div></div><div class="modal-actions"><button class="ghost-btn" data-close>取消</button><button class="primary-btn" data-action="save-task">保存</button></div></div></div>';
+      return '<div class="modal-backdrop" data-close><div class="modal" onclick="event.stopPropagation()"><div class="modal-head"><h3>' + (editing ? "编辑任务" : "新增任务") + '</h3><button class="close" data-close>×</button></div><div class="form-grid"><div class="form-field"><label>任务名称</label><input id="task-title" value="' + escapeHtml(task.title || "") + '" placeholder="例如：阅读 30 分钟"></div><div class="form-row"><div class="form-field"><label>所属部门</label><select id="task-dept">' + departments.filter(item => item.id !== "office").map(function(dept) { return '<option value="' + dept.id + '" ' + ((task.department || modal.dept) === dept.id ? "selected" : "") + '>' + dept.title + '｜' + dept.subtitle + '</option>'; }).join("") + '</select></div><div class="form-field"><label>子模块</label>' + renderTaskModuleSelect(task) + '</div></div><div class="form-field"><label>完成说明</label><textarea id="task-detail" placeholder="怎样算完成？把动作写小一点">' + escapeHtml(task.detail || "") + '</textarea></div><div class="form-row"><div class="form-field"><label>优先级</label><select id="task-priority"><option value="high" ' + (task.priority === "high" ? "selected" : "") + '>高</option><option value="medium" ' + (task.priority === "medium" || !task.priority ? "selected" : "") + '>中</option><option value="low" ' + (task.priority === "low" ? "selected" : "") + '>低</option></select></div><div class="form-field"><label>重复周期</label><select id="task-repeat"><option value="none" ' + (task.repeat === "none" || !task.repeat ? "selected" : "") + '>一次性</option><option value="daily" ' + (task.repeat === "daily" ? "selected" : "") + '>每天</option><option value="weekly" ' + (task.repeat === "weekly" ? "selected" : "") + '>每周</option><option value="monthly" ' + (task.repeat === "monthly" ? "selected" : "") + '>每月</option></select></div></div><div class="form-field"><label>截止日期（可选）</label><input id="task-due" type="date" value="' + escapeHtml(task.dueDate || "") + '"></div></div><div class="modal-actions"><button class="ghost-btn" data-close>取消</button><button class="primary-btn" data-action="save-task">保存</button></div></div></div>';
     }
     function analyzeLocal(text) {
       const clean = String(text || "").replace(/\s+/g, " ").trim();
@@ -538,9 +852,11 @@
     async function saveTask() {
       const title = document.getElementById("task-title").value.trim();
       if (!title) return showToast("先给任务写个名字");
-      const payload = { department: document.getElementById("task-dept").value, title: title, tag: document.getElementById("task-tag").value.trim() || department(document.getElementById("task-dept").value).title, detail: document.getElementById("task-detail").value.trim() || "完成这个动作即可", priority: document.getElementById("task-priority").value, repeat: document.getElementById("task-repeat").value, dueDate: document.getElementById("task-due").value || "" };
+      const deptId = document.getElementById("task-dept").value;
+      const selectedModule = moduleById(deptId, document.getElementById("task-tag").value);
+      const payload = { department: deptId, moduleId: selectedModule.id, title: title, tag: selectedModule.name, detail: document.getElementById("task-detail").value.trim() || "完成这个动作即可", priority: document.getElementById("task-priority").value, repeat: document.getElementById("task-repeat").value, dueDate: document.getElementById("task-due").value || "" };
       if (modal.taskId) { Object.assign(state.tasks.find(item => item.id === modal.taskId), payload); showToast("任务已更新"); }
-      else { state.tasks.push({ ...payload, id: uid("task"), selectedDates: [today()], doneDates: [] }); showToast("任务已加入今天"); }
+      else { state.tasks.push({ ...payload, id: uid("task"), kind: payload.tag === "饮食饮水" && /喝水|饮水/.test(title) ? "water" : "task", selectedDates: modal.addToToday === false ? [] : [today()], excludedDates: [], doneDates: [], createdAt: today() }); showToast(modal.addToToday === false ? "任务已加入任务库" : "任务已加入今天"); }
       persist(); modal = null; render();
     }
     async function saveInspiration() {
@@ -594,19 +910,44 @@
       if (!file) return;
       const reader = new FileReader();
       reader.onload = function() {
-        try { const imported = JSON.parse(reader.result); if (!imported.tasks || !imported.metrics) throw new Error("invalid"); state = { ...clone(defaultState), ...imported }; persist(); modal = null; render(); showToast("本地数据已导入"); }
+        try { const imported = JSON.parse(reader.result); if (!imported.tasks || !imported.metrics) throw new Error("invalid"); state = { ...clone(defaultState), ...imported }; state.tasks = state.tasks.map(ensureTaskModule); state.trash = (state.trash || []).map(ensureTaskModule); persist(); modal = null; render(); showToast("本地数据已导入"); }
         catch (_) { showToast("文件格式不正确"); }
       };
       reader.readAsText(file);
     }
+    function saveWorkoutLog() {
+      const entry = entryForDate(modal.date);
+      if (!entry) return showToast("找不到这次训练");
+      const exercises = entry.steps.filter(step => step.kind === "exercise").map(function(exercise, index) {
+        return {
+          name: exercise.label,
+          sets: document.getElementById("workout-sets-" + index)?.value || "",
+          reps: document.getElementById("workout-reps-" + index)?.value || "",
+          weight: document.getElementById("workout-weight-" + index)?.value || ""
+        };
+      });
+      state.workoutLogs[modal.date] = {
+        status: document.getElementById("workout-status").value,
+        sleep: document.getElementById("workout-sleep").value,
+        rpe: document.getElementById("workout-rpe").value,
+        pain: document.getElementById("workout-pain").value,
+        notes: document.getElementById("workout-note").value.trim(),
+        exercises: exercises,
+        updatedAt: today()
+      };
+      persist(); modal = null; render(); showToast("训练记录已保存");
+    }
     function bindEvents() {
       document.querySelectorAll("[data-nav]").forEach(function(el) { el.addEventListener("click", function() { state.activeDepartment = el.dataset.nav; persist(); render(); window.scrollTo({ top: 0, behavior: "smooth" }); }); });
-      document.querySelectorAll("[data-task]").forEach(function(el) { el.addEventListener("click", function() { const task = state.tasks.find(item => item.id === el.dataset.task); task.doneDates = task.doneDates || []; task.doneDates = completedToday(task) ? task.doneDates.filter(date => date !== today()) : task.doneDates.concat(today()); persist(); render(); }); });
+      document.querySelectorAll("[data-task]").forEach(function(el) { el.addEventListener("click", function() { const task = state.tasks.find(item => item.id === el.dataset.task); if (isHydrationTask(task)) return showToast("请在卫健委的饮水记录中打卡，任务会自动完成"); task.doneDates = task.doneDates || []; task.doneDates = completedToday(task) ? task.doneDates.filter(date => date !== today()) : task.doneDates.concat(today()); persist(); render(); }); });
       document.querySelectorAll("[data-edit-task]").forEach(function(el) { el.addEventListener("click", function() { modal = { type: "task", taskId: el.dataset.editTask }; render(); }); });
       document.querySelectorAll("[data-remove]").forEach(function(el) { el.addEventListener("click", function() { const task = state.tasks.find(item => item.id === el.dataset.remove); task.selectedDates = (task.selectedDates || []).filter(date => date !== today()); persist(); render(); }); });
       document.querySelectorAll("[data-delete-task]").forEach(function(el) { el.addEventListener("click", function() { const index = state.tasks.findIndex(item => item.id === el.dataset.deleteTask); if (index < 0) return; state.trash.push({ ...state.tasks[index], deletedAt: today() }); state.tasks.splice(index, 1); persist(); render(); showToast("任务已移入回收站"); }); });
-      document.querySelectorAll("[data-select]").forEach(function(el) { el.addEventListener("change", function() { const task = state.tasks.find(item => item.id === el.dataset.select); task.selectedDates = task.selectedDates || []; if (el.checked) task.selectedDates = Array.from(new Set(task.selectedDates.concat(today()))); else task.selectedDates = task.selectedDates.filter(date => date !== today()); persist(); render(); }); });
+      document.querySelectorAll("[data-select]").forEach(function(el) { el.addEventListener("change", function() { const task = state.tasks.find(item => item.id === el.dataset.select); task.selectedDates = task.selectedDates || []; task.excludedDates = task.excludedDates || []; if (el.checked) { task.selectedDates = Array.from(new Set(task.selectedDates.concat(today()))); task.excludedDates = task.excludedDates.filter(date => date !== today()); } else { task.selectedDates = task.selectedDates.filter(date => date !== today()); if (task.repeat && task.repeat !== "none") task.excludedDates = Array.from(new Set(task.excludedDates.concat(today()))); } persist(); render(); }); });
+      document.querySelectorAll("[data-task-library]").forEach(function(el) { el.addEventListener("toggle", function() { state.taskLibraryOpen[el.dataset.taskLibrary] = el.open; persist(); }); });
+      const taskDept = document.getElementById("task-dept"); if (taskDept) taskDept.addEventListener("change", function() { const select = document.querySelector("[data-task-module-select]"); if (select) select.innerHTML = modulesFor(taskDept.value).map(function(item) { return '<option value="' + escapeHtml(item.id) + '">' + escapeHtml(item.name) + '</option>'; }).join(""); });
       document.querySelectorAll("[data-metric]").forEach(function(el) { el.addEventListener("change", function() { state.metrics[el.dataset.metric] = el.value; persist(); render(); }); });
+      document.querySelectorAll("[data-workout-day]").forEach(function(el) { el.addEventListener("click", function() { state.workoutViewDate = el.dataset.workoutDay; persist(); render(); }); });
       document.querySelectorAll("[data-water]").forEach(function(el) { el.addEventListener("click", function() { state.water[today()] = Number(el.dataset.water); persist(); render(); }); });
       document.querySelectorAll("[data-meal]").forEach(function(el) { el.addEventListener("change", function() { const meals = state.meals[today()] || [false, false, false]; meals[Number(el.dataset.meal)] = el.checked; state.meals[today()] = meals; persist(); render(); }); });
       document.querySelectorAll("[data-book]").forEach(function(el) { el.addEventListener("click", function() { const book = state.books.find(item => item.id === el.dataset.book); modal = { type: "book", bookId: book.id, book: book }; render(); }); });
@@ -620,17 +961,25 @@
       data = data || {};
       if (type === "settings") modal = { type: "settings" };
       if (type === "pick-tasks") modal = { type: "picker" };
-      if (type === "add-task") modal = { type: "task", dept: data.dept || (state.activeDepartment !== "office" ? state.activeDepartment : "education"), tag: data.tag || "" };
+      if (type === "add-task") modal = { type: "task", dept: data.dept || (state.activeDepartment !== "office" ? state.activeDepartment : "education"), tag: data.tag || "", addToToday: data.dept ? false : true };
       if (type === "add-book") modal = { type: "book" };
       if (type === "add-goal") modal = { type: "goal" };
+      if (type === "manage-modules") modal = { type: "module-manager", dept: data.dept };
+      if (type === "add-body-record") modal = { type: "body-record" };
+      if (type === "edit-body-record") modal = { type: "body-record", recordId: data.recordId };
+      if (type === "analyze-meal") modal = { type: "meal" };
       if (type === "edit-goal") {}
       if (type === "add-inspiration") modal = { type: "inspiration" };
+      if (type === "open-workout-log") modal = { type: "workout-log", date: data.workoutDate };
+      if (type === "edit-workout-plan") modal = { type: "workout-edit", date: data.workoutDate || state.workoutViewDate || today() };
+      if (type === "show-workout-note") return showToast("不空腹；头晕/眼前发黑/胸闷/明显心慌立即停止；右臀痛超过 3 分就改动作。");
       if (type === "open-module") modal = { type: "module", dept: data.dept, module: data.module };
       if (type === "analyze-inspiration") { const input = document.getElementById(data.inputId || "radar-url"); const url = input && input.value.trim(); if (!url) return showToast("先粘贴一条链接"); modal = { type: "inspiration", url: url }; }
-      if (type === "water-plus") { state.water[today()] = Math.min(8, Number(state.water[today()] || 0) + 1); persist(); render(); return; }
+      if (type === "water-plus") { state.water[today()] = Math.min(Number(state.waterTarget || 8), Number(state.water[today()] || 0) + 1); persist(); render(); return; }
       if (type === "water-minus") { state.water[today()] = Math.max(0, Number(state.water[today()] || 0) - 1); persist(); render(); return; }
+      if (type === "edit-water-target") { const next = Number(prompt("每天目标多少杯？", state.waterTarget || 8)); if (next >= 1 && next <= 30) { state.waterTarget = Math.round(next); persist(); render(); showToast("饮水目标已更新"); } return; }
       if (type === "reset") { if (confirm("把今天的完成状态清空吗？任务仍会保留。")) { state.tasks.forEach(task => task.doneDates = (task.doneDates || []).filter(date => date !== today())); state.water[today()] = 0; state.meals[today()] = [false, false, false]; persist(); render(); showToast("今天已重置"); } return; }
-      if (type === "reset-data") { if (confirm("恢复默认示例数据吗？当前本地数据会被覆盖。")) { localStorage.removeItem(STORAGE_KEY); state = clone(defaultState); modal = null; render(); showToast("已恢复默认示例"); } return; }
+      if (type === "reset-data") { if (confirm("恢复默认示例数据吗？当前本地数据会被覆盖。")) { localStorage.removeItem(STORAGE_KEY); state = clone(defaultState); state.tasks = state.tasks.map(ensureTaskModule); modal = null; render(); showToast("已恢复默认示例"); } return; }
       if (type === "export") { exportData(); return; }
       if (type === "install") {
         if (!deferredInstallPrompt) return showToast("当前局域网地址只能添加快捷方式；部署 HTTPS 后才能安装为独立 App");
@@ -642,6 +991,11 @@
         return;
       }
       if (type === "save-task") { await saveTask(); return; }
+      if (type === "save-workout-log") { saveWorkoutLog(); return; }
+      if (type === "save-workout-plan") { saveWorkoutPlan(); return; }
+      if (type === "save-body-record") { await saveBodyRecord(); return; }
+      if (type === "save-modules") { saveModules(); return; }
+      if (type === "save-meal") { await saveMeal(); return; }
       if (type === "save-book") { saveBook(); return; }
       if (type === "save-goal") { saveGoal(); return; }
       if (type === "save-inspiration") { await saveInspiration(); return; }
