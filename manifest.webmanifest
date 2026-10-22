@@ -2,10 +2,10 @@
   "name": "阿卢工作台",
   "short_name": "阿卢工作台",
   "description": "阿卢工作台：考研、健康与生活节奏的个人总览。",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#eaf8ff",
   "theme_color": "#309bd6",
   "lang": "zh-CN",
-  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+  "icons": [{ "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
 }

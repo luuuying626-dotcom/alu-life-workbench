@@ -9,7 +9,7 @@ test('registers the offline worker when the browser supports it', async () => {
       register: async path => { registeredPath = path; }
     }
   });
-  assert.equal(registeredPath, '/sw.js');
+  assert.equal(registeredPath, './sw.js');
 });
 
 test('does nothing in browsers without service worker support', async () => {

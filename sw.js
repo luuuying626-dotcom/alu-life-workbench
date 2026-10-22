@@ -1,14 +1,14 @@
 const CACHE = 'alu-workbench-shell-v5';
 const SHELL = [
-  '/',
-  '/index.html',
-  '/manifest.webmanifest',
-  '/styles.css',
-  '/src/app.js',
-  '/src/store.js',
-  '/src/domain.js',
-  '/src/pwa.js',
-  '/icon.svg'
+  './',
+  './index.html',
+  './manifest.webmanifest',
+  './styles.css',
+  './src/app.js',
+  './src/store.js',
+  './src/domain.js',
+  './src/pwa.js',
+  './icon.svg'
 ];
 
 self.addEventListener('install', event => {
@@ -22,5 +22,5 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const request = event.request;
   if (new URL(request.url).pathname.startsWith('/api/')) return;
-  event.respondWith(fetch(request).catch(() => caches.match(request).then(response => response || caches.match('/index.html'))));
+  event.respondWith(fetch(request).catch(() => caches.match(request).then(response => response || caches.match('./index.html'))));
 });
