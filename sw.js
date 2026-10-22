@@ -1,4 +1,4 @@
-const CACHE = 'alu-workbench-shell-v5';
+const CACHE = 'alu-workbench-shell-v6';
 const SHELL = [
   './',
   './index.html',
@@ -8,6 +8,7 @@ const SHELL = [
   './src/store.js',
   './src/domain.js',
   './src/pwa.js',
+  './assets/morning-mist-island-hero.png',
   './icon.svg'
 ];
 
