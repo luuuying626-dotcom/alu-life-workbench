@@ -1,4 +1,4 @@
-const CACHE = 'alu-workbench-shell-v4';
+const CACHE = 'alu-workbench-shell-v5';
 const SHELL = [
   '/',
   '/index.html',
@@ -7,6 +7,7 @@ const SHELL = [
   '/src/app.js',
   '/src/store.js',
   '/src/domain.js',
+  '/src/pwa.js',
   '/icon.svg'
 ];
 
