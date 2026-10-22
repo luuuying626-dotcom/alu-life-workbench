@@ -1,14 +1,13 @@
-const CACHE = 'alu-workbench-shell-v3';
+const CACHE = 'alu-workbench-shell-v4';
 const SHELL = [
   '/',
   '/index.html',
   '/manifest.webmanifest',
-  '/assets/characters/mike.png',
-  '/assets/characters/randy.png',
-  '/assets/characters/sully.png',
-  '/assets/characters/terri.png',
-  '/assets/characters/scott.png',
-  '/assets/characters/art.png'
+  '/styles.css',
+  '/src/app.js',
+  '/src/store.js',
+  '/src/domain.js',
+  '/icon.svg'
 ];
 
 self.addEventListener('install', event => {

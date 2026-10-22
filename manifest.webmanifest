@@ -1,13 +1,11 @@
 {
   "name": "阿卢工作台",
   "short_name": "阿卢工作台",
-  "description": "阿卢工作台：把日程、学习、健康和长期发展放在一个可执行的本地工作台里。",
+  "description": "阿卢工作台：考研、健康与生活节奏的个人总览。",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f5f1e8",
-  "theme_color": "#223d56",
+  "background_color": "#eaf8ff",
+  "theme_color": "#309bd6",
   "lang": "zh-CN",
-  "icons": [
-    { "src": "/assets/characters/mike.png", "sizes": "760x760", "type": "image/png", "purpose": "any maskable" }
-  ]
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
 }

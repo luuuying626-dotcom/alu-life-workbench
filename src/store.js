@@ -1,0 +1,4 @@
+export const STORAGE_KEY='alu-workbench-2';
+export function createInitialState(){return {profile:{waterCupMl:250,waterTargetMl:1750},goals:[{id:'exam',title:'考研：2027 年 12 月完成初试'},{id:'english',title:'英语：考研能力 + 日常交流'},{id:'health',title:'运动健康：每周 3 次运动'},{id:'finance',title:'财务安全：建立 1–2 万元应急金'}],tasks:[],logs:{},reviews:{}};}
+export function normalizeState(v){const s=v&&typeof v==='object'?v:{}; return {...createInitialState(),...s,profile:{...createInitialState().profile,...s.profile},goals:Array.isArray(s.goals)&&s.goals.length?s.goals:createInitialState().goals,tasks:Array.isArray(s.tasks)?s.tasks:[],logs:s.logs||{},reviews:s.reviews||{}};}
+export function createRepository(storage=localStorage){return {load:()=>normalizeState(JSON.parse(storage.getItem(STORAGE_KEY)||'null')),save:s=>storage.setItem(STORAGE_KEY,JSON.stringify(s))};}
