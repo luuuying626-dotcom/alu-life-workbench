@@ -1,14 +1,16 @@
-const CACHE = 'alu-workbench-shell-v6';
+const CACHE = 'alu-workbench-shell-v7';
 const SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
   './styles.css',
+  './fix.css',
   './src/app.js',
   './src/store.js',
   './src/domain.js',
   './src/pwa.js',
   './assets/morning-mist-island-hero.png',
+  './assets/stitch-closeup-reference.png',
   './icon.svg'
 ];
 

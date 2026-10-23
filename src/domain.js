@@ -11,3 +11,4 @@ export function goalProgress(goal) { if (goal.type === 'stage') return Math.max(
 export function applyGoalValue(goal, amount) { return { ...goal, currentValue: Math.max(0, Number(goal.currentValue || 0) + Number(amount || 0)) }; }
 export function periodFor(level, value) { const date = new Date(`${key(value)}T12:00:00`); const year = date.getFullYear(); if (level === '年度') return String(year); if (level === '季度') return `${year} Q${Math.floor(date.getMonth() / 3) + 1}`; if (level === '月度') return `${year}-${String(date.getMonth() + 1).padStart(2, '0')}`; return mondayOf(key(date)); }
 export function validParent(level, parent) { const order = ['年度', '季度', '月度', '周度']; return level === '年度' ? !parent : order.indexOf(parent?.level) === order.indexOf(level) - 1; }
+export function clockText(date = new Date()) { return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`; }
